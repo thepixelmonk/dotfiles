@@ -12,6 +12,7 @@ font:
   bold_italic:
     family: FiraCode Nerd Font
     style: Bold Italic
+theme: Japanesque
 colors:
   name: Japanesque
   primary:
@@ -41,4 +42,3 @@ colors:
     magenta: '#5f4190'
     cyan:    '#76bbca'
     white:   '#b1b5ae'
-theme: Japanesque
