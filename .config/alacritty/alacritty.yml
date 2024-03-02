@@ -1,0 +1,44 @@
+font:
+  size: 14.0
+  normal:
+    family: FiraCode Nerd Font
+    style: Regular
+  bold:
+    family: FiraCode Nerd Font
+    style: Bold
+  italic:
+    family: FiraCode Nerd Font
+    style: Italic
+  bold_italic:
+    family: FiraCode Nerd Font
+    style: Bold Italic
+colors:
+  name: Japanesque
+  primary:
+    background: '#1d1d1d'
+    foreground: '#f7f6ec'
+  cursor:
+    text:   '#1d1d1d'
+    cursor: '#eccf4f'
+  selection:
+    text:       '#1d1d1d'
+    background: '#165776'
+  normal:
+    black:   '#343835'
+    red:     '#ce3e60'
+    green:   '#7bb75b'
+    yellow:  '#e8b32a'
+    blue:    '#4c99d3'
+    magenta: '#a57fc4'
+    cyan:    '#389aac'
+    white:   '#f9faf6'
+  bright:
+    black:   '#585a58'
+    red:     '#d18ea6'
+    green:   '#767e2b'
+    yellow:  '#77592e'
+    blue:    '#135879'
+    magenta: '#5f4190'
+    cyan:    '#76bbca'
+    white:   '#b1b5ae'
+theme: Japanesque
