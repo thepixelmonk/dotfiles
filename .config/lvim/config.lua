@@ -39,9 +39,27 @@ vim.api.nvim_set_keymap('n', '<c-w><space>', ':lua FocusFirstFloat()<cr>', bufop
 lvim.plugins = {
   {
     "ThePrimeagen/harpoon",
-      branch = "harpoon2", -- Specify the branch here
       config = function()
         require("harpoon").setup({})
+    end
+  },
+  {
+    "laytan/cloak.nvim",
+      config = function()
+        require("cloak").setup({
+          enabled = true,
+          cloak_character = '*',
+          highlight_group = 'Comment',
+          cloak_length = nil,
+          try_all_patterns = true,
+          patterns = {
+            {
+              file_pattern = '.env*',
+              cloak_pattern = '=.+',
+              replace = null,
+            },
+          },
+        })
     end
   },
   {
