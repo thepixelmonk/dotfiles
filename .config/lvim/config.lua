@@ -38,13 +38,40 @@ vim.api.nvim_set_keymap('n', '<c-w><space>', ':lua FocusFirstFloat()<cr>', bufop
 
 lvim.plugins = {
   {
-    "airblade/vim-gitgutter"
+    "lewis6991/gitsigns.nvim",
+      config = function()
+        require("gitsigns").setup()
+    end
   },
   {
     "ThePrimeagen/harpoon",
       config = function()
-        require("harpoon").setup({})
+        require("harpoon").setup()
     end
+  },
+  {
+    "bloznelis/before.nvim",
+      config = function()
+        require("before").setup({
+          history_size = 10,
+          history_wrap_enabled = true,
+          telescope_for_preview = true
+        })
+    end
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+      config = function()
+        require("colorizer").setup()
+    end
+  },
+  {
+    'jinh0/eyeliner.nvim',
+      config = function()
+        require'eyeliner'.setup({
+          highlight_on_key = true
+        })
+      end
   },
   {
     "laytan/cloak.nvim",
@@ -80,6 +107,7 @@ lvim.plugins = {
   }
 }
 
+lvim.builtin.which_key.mappings["x"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" }
 lvim.builtin.which_key.mappings["t"] = { "<cmd>ToggleTerm<cr>", "Terminal" }
 lvim.builtin.which_key.mappings["d"] = { function() OpenFloatDiagnostic() end, "Diagnostics" }
 
@@ -87,6 +115,13 @@ lvim.builtin.which_key.mappings["a"] = {
   name = "+AI",
   c = { ":ChatGPT<cr>", "Chat" },
   e = { ":ChatGPTEditWithInstructions<cr>", "Edit" },
+}
+
+lvim.builtin.which_key.mappings["e"] = {
+  name = "+Edits",
+  n = { ":lua require('before'):jump_to_next_edit()<cr>", "Next" },
+  p = { ":lua require('before'):jump_to_last_edit()<cr>", "Previous" },
+  l = { ":lua require('before'):show_edits()<cr>", "List" },
 }
 
 lvim.builtin.which_key.mappings["h"] = {
