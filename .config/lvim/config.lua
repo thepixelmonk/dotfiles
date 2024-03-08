@@ -38,6 +38,9 @@ vim.api.nvim_set_keymap('n', '<c-w><space>', ':lua FocusFirstFloat()<cr>', bufop
 
 lvim.plugins = {
   {
+    "airblade/vim-gitgutter"
+  },
+  {
     "ThePrimeagen/harpoon",
       config = function()
         require("harpoon").setup({})
