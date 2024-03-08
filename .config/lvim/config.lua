@@ -47,6 +47,14 @@ function HarpoonToggle(harpoon_files)
     }):find()
 end
 
+require("lspconfig").astro.setup({
+    init_options = {
+      typescript = {
+        tsdk = 'node_modules/typescript/lib'
+      }
+    }
+})
+
 vim.opt.shiftwidth = 4
 vim.g.astro_stylus = "enable"
 vim.g.astro_typescript = "enable"
@@ -57,7 +65,7 @@ lvim.plugins = {
   {
     "lewis6991/gitsigns.nvim",
       config = function()
-        require("gitsigns").setup()
+        require("gitsigns").setup({})
       end
   },
   {
@@ -66,14 +74,14 @@ lvim.plugins = {
       dependencies = { "nvim-lua/plenary.nvim" },
       config = function()
         local harpoon = require('harpoon')
-        harpoon.setup()
+        harpoon.setup({})
         lvim.builtin.which_key.mappings["z"] = { function() harpoon:list():append() end, "Append" }
       end
   },
   {
     "norcalli/nvim-colorizer.lua",
       config = function()
-        require("colorizer").setup()
+        require("colorizer").setup({})
     end
   },
   {
