@@ -1,0 +1,7 @@
+name: default
+root: ~/
+
+windows:
+  - vim: lvim
+  - local: ~
+  - ssh: ssh ariel
