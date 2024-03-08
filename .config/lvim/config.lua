@@ -30,6 +30,23 @@ function OpenFloatDiagnostic()
     vim.diagnostic.open_float(0, { scope = 'line' })
 end
 
+local tconf = require("telescope.config").values
+function HarpoonToggle(harpoon_files)
+    local file_paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+    end
+
+    require("telescope.pickers").new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+            results = file_paths,
+        }),
+        previewer = tconf.file_previewer({}),
+        sorter = tconf.generic_sorter({}),
+    }):find()
+end
+
 vim.opt.shiftwidth = 4
 vim.g.astro_stylus = "enable"
 vim.g.astro_typescript = "enable"
@@ -41,23 +58,17 @@ lvim.plugins = {
     "lewis6991/gitsigns.nvim",
       config = function()
         require("gitsigns").setup()
-    end
+      end
   },
   {
     "ThePrimeagen/harpoon",
+      branch = "harpoon2",
+      dependencies = { "nvim-lua/plenary.nvim" },
       config = function()
-        require("harpoon").setup()
-    end
-  },
-  {
-    "bloznelis/before.nvim",
-      config = function()
-        require("before").setup({
-          history_size = 10,
-          history_wrap_enabled = true,
-          telescope_for_preview = true
-        })
-    end
+        local harpoon = require('harpoon')
+        harpoon.setup()
+        lvim.builtin.which_key.mappings["z"] = { function() harpoon:list():append() end, "Append" }
+      end
   },
   {
     "norcalli/nvim-colorizer.lua",
@@ -127,7 +138,8 @@ lvim.builtin.which_key.mappings["e"] = {
 lvim.builtin.which_key.mappings["h"] = {
   name = "+Harpoon",
   a = { ":lua require('harpoon'):list():append()<cr>", "Append" },
-  m = { ":Telescope harpoon marks<cr>", "Marks" },
+  l = { ":lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<cr>", "List" },
+  t = { ":lua HarpoonToggle(require('harpoon'):list())<cr>", "Telescope" },
   s = { ":lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<cr>", "Scratchpad" },
 }
 
