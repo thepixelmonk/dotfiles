@@ -136,11 +136,10 @@ lvim.builtin.which_key.mappings["a"] = {
   e = { ":ChatGPTEditWithInstructions<cr>", "Edit" },
 }
 
-lvim.builtin.which_key.mappings["e"] = {
-  name = "+Edits",
-  n = { ":lua require('before'):jump_to_next_edit()<cr>", "Next" },
-  p = { ":lua require('before'):jump_to_last_edit()<cr>", "Previous" },
-  l = { ":lua require('before'):show_edits()<cr>", "List" },
+lvim.builtin.which_key.mappings["d"] = {
+  name = "+Diagnostics",
+  c = { function() OpenFloatDiagnostic() end, "Current" },
+  l = { ":Telescope diagnostics<cr>", "List" },
 }
 
 lvim.builtin.which_key.mappings["h"] = {
