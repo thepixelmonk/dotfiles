@@ -87,3 +87,6 @@ $shell"""
 
 [line_break]
 disabled = true
+
+[hostname]
+format = '[$hostname]($style) in '
