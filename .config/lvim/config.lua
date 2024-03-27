@@ -55,7 +55,9 @@ require("lspconfig").astro.setup({
     }
 })
 
-vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+
 vim.g.astro_stylus = "enable"
 vim.g.astro_typescript = "enable"
 
@@ -65,7 +67,7 @@ lvim.plugins = {
   {
     "lewis6991/gitsigns.nvim",
       config = function()
-        require("gitsigns").setup({})
+        require("gitsigns").setup()
       end
   },
   {
@@ -138,8 +140,8 @@ lvim.builtin.which_key.mappings["a"] = {
 
 lvim.builtin.which_key.mappings["d"] = {
   name = "+Diagnostics",
-  c = { function() OpenFloatDiagnostic() end, "Current" },
-  l = { ":Telescope diagnostics<cr>", "List" },
+  l = { function() OpenFloatDiagnostic() end, "Line" },
+  t = { ":Telescope diagnostics<cr>", "Telescope" },
 }
 
 lvim.builtin.which_key.mappings["h"] = {
