@@ -125,7 +125,8 @@ lvim.plugins = {
         "folke/trouble.nvim",
         "nvim-telescope/telescope.nvim"
       }
-  }
+  },
+  { "mistricky/codesnap.nvim", build = "make" }
 }
 
 lvim.builtin.which_key.mappings["x"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" }
